@@ -20,13 +20,16 @@ const Table = (props) => {
               <th scope="col">Title</th>
               <th scope="col">Stack</th>
               <th scope="col">Added</th>
-
             </tr>
           </thead>
           <tbody>{rows}</tbody>
         </table>
 
-        {props.data.length < 1 && "There is no data."}
+        {props.data.length < 1 && (
+          <div className="text-center mt-3">
+            <span className="main-loading-txt">There is no data.</span>
+          </div>
+        )}
       </div>
     );
 }

@@ -37,12 +37,14 @@ const App = () => {
               next: res.data.next,
               prev: res.data.previous,
             })
-            setLastUpdate((prev) => {
-              return {
-                ...prev,
-                jobs: res.data.results[0].created_at
-              };
-            });
+            if (res.data.results.length > 0) {
+              setLastUpdate((prev) => {
+                return {
+                  ...prev,
+                  jobs: res.data.results[0].created_at,
+                };
+              });
+            }
             setLoading(false)
         })
         .catch((err) => {
@@ -117,8 +119,9 @@ const App = () => {
             lastUpdate={moment(lastUpdate.tech).format("DD MMMM YYYY")}
             stack={stack}
           />
-          <Options stack={stack} />
 
+          {/* <Options stack={stack} /> */}
+          
           <Paginator
             current={currentPage}
             info={pagination}
