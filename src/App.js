@@ -28,7 +28,7 @@ const App = () => {
       if (company) {
         companyUrlString = `&company=${company}`
       }
-        axios.get(`http://tech-sg.herokuapp.com/?page=${currentPage}`)
+        axios.get(`https://tech-sg.herokuapp.com/?page=${currentPage}`)
         .then((res) => {
             setJobs(res.data.results);
             setPagination({
@@ -50,16 +50,20 @@ const App = () => {
           console.log(`Error in axios request`, err)
         })
 
-        axios.get("/tech")
-        .then((res) => {
-            setStack(res.data)
-            setLastUpdate(prev => {
-              return {...prev, tech: res.data[res.data.length-1].created_at}
-            })
-        })
-        .catch((err) => {
-          console.log(`Error in axios request for tech`, err)
-        })
+        axios
+          .get("https://tech-sg.herokuapp.com/tech")
+          .then((res) => {
+            setStack(res.data);
+            setLastUpdate((prev) => {
+              return {
+                ...prev,
+                tech: res.data[res.data.length - 1].created_at,
+              };
+            });
+          })
+          .catch((err) => {
+            console.log(`Error in axios request for tech`, err);
+          });
     }, []);
 
     useEffect(()=> {
@@ -72,7 +76,7 @@ const App = () => {
         companyUrlString = `&company=${company}`;
       }
         axios
-          .get(`/jobs?page=${currentPage}`)
+          .get(`https://tech-sg.herokuapp.com/jobs?page=${currentPage}`)
           .then((res) => {
             console.log(res.data);
             setJobs(res.data.results);
