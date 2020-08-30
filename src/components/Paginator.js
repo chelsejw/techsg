@@ -9,10 +9,10 @@ const Paginator = (props)=> {
     let totalPages = Math.ceil(count/20)
 
     for (let i=current-2; i < current+3; i++) {
-      if (i > 0) {
+      if (i > 0 && i <=totalPages) {
         pageButtons.push(
           <PaginatorBtn
-            current={i == current ? true : false}
+            current={i===current ? true : false}
             setPage={props.setPage}
             num={i}
             text={i}
