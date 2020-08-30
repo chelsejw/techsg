@@ -7,7 +7,6 @@ const Paginator = (props)=> {
     let pageButtons = [];
 
     let totalPages = Math.ceil(count/20)
-    console.log(totalPages)
 
     for (let i=current-2; i < current+3; i++) {
       if (i > 0) {

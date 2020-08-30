@@ -28,8 +28,9 @@ const App = () => {
       if (company) {
         companyUrlString = `&company=${company}`
       }
-        axios.get(`https://tech-sg.herokuapp.com/?page=${currentPage}`)
+        axios.get(`https://tech-sg.herokuapp.com/jobs/?page=${currentPage}`)
         .then((res) => {
+          console.log(res)
             setJobs(res.data.results);
             setPagination({
               count: res.data.count,
@@ -96,6 +97,8 @@ const App = () => {
     }, [currentPage, queries, company, sort])
 
     useEffect(()=> {
+      console.log(jobs)
+      console.log(stack)
     }, [jobs, stack, lastUpdate])
 
     const firstItemIndex = (itemsPerPage, currentPage) => {
