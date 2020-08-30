@@ -1,5 +1,6 @@
-# Scrappy (TBC)
-Other names: Billboard ___?  
+# Tech@SG
+
+Deployed at https://chelsejw.github.io/techsg/
 
 ### What is this project about?
 - Born out of curiousity to know the stacks/languages most in demand in the current tech landscape in Singapore.
