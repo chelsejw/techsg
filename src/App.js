@@ -68,6 +68,7 @@ const App = () => {
     }, []);
 
     useEffect(()=> {
+      setLoading(true)
       let stackUrlString;
       if (queries && queries.length > 0) {
         stackUrlString = `&stack=${queries.join("&stack=")}`;
@@ -112,10 +113,10 @@ const App = () => {
         <div className="container">
           <h1 className="text-center main-header mb-2">Tech@SG</h1>
 
-          {/* <SupportedHeader
+          <SupportedHeader
             lastUpdate={moment(lastUpdate.tech).format("DD MMMM YYYY")}
             stack={stack}
-          /> */}
+          />
           <Options stack={stack} />
 
           <Paginator
