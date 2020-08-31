@@ -27,7 +27,7 @@ const MainData = (props) => {
             <div className="text-center mt-3">
               <span className="main-loading-txt">Getting jobs...</span>
               {props.longLoadTime &&
-                "This is taking a while because Heroku is slow... I promise I'll find a better home for my backend..."}
+                <div className="mt-2">"This could take a while because Heroku is slow at the start... I promise I'll find a better home for my backend!"</div>}
             </div>
           </div>
         )}

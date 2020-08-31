@@ -22,9 +22,10 @@ const App = () => {
 
     useEffect(() => {
       setLoading();
+      setLongLoadTime(false)
       setTimeout(()=> {
         setLongLoadTime(true)
-      }, 5000)
+      }, 4000)
       let stackUrlString;
       if (queries && queries.length > 0) {
         stackUrlString = `&stack=${queries.join("&stack=")}`
