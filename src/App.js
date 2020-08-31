@@ -9,7 +9,7 @@ import Paginator from './components/Paginator'
 
 const App = () => {
     const [jobs, setJobs] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(null)
     const [failure, setFailure] = useState(false)
     const [lastUpdate, setLastUpdate] = useState({})
     const [stack, setStack] = useState([])
@@ -18,8 +18,13 @@ const App = () => {
     const [pagination, setPagination] = useState({})
     const [company, setCompany] = useState(null)
     const [queries, setQueries] = useState(null)
+    const [longLoadTime, setLongLoadTime] = useState(false)
 
     useEffect(() => {
+      setLoading();
+      setTimeout(()=> {
+        setLongLoadTime(true)
+      }, 5000)
       let stackUrlString;
       if (queries && queries.length > 0) {
         stackUrlString = `&stack=${queries.join("&stack=")}`
@@ -46,6 +51,7 @@ const App = () => {
               });
             }
             setLoading(false)
+            setLongLoadTime(false)
         })
         .catch((err) => {
           setLoading(false)
@@ -130,6 +136,7 @@ const App = () => {
 
           <MainData
             firstIndex={firstItemIndex(20, currentPage)}
+            longLoadTime={longLoadTime}
             loading={loading}
             failure={failure}
             lastUpdate={moment(lastUpdate.jobs).format("DD MMM, h:mm:ss a")}
